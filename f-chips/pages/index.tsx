@@ -1,12 +1,13 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import Card from '../components/containers/Card'
 
 const Home: NextPage = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div style={{width: 196, marginLeft: 128, marginTop: 128}}>
+      <Card>
+      Hello World
+    </Card>
+    </div>
   )
 }
 
