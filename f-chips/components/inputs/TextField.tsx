@@ -6,7 +6,7 @@ type Props = {
 
 const TextField: NextPage<Props> = (props) => {
     return(
-        <input type="text" className="border-solid border-1 border-black/[0.25] rounded-[20px]" placeholder={props.placeholder}/>
+        <input type="text" className="border-solid border border-black border-opacity-25 rounded-[20px] px-[8px] py-[4px]" placeholder={props.placeholder}/>
     );
 };
 

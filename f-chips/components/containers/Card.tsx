@@ -6,7 +6,7 @@ type Props = {
 
 const Card: NextPage<Props> = (props) => {
     return(
-        <div className="shadow-lg rounded-[20px] p-[24px] min-h-[238px]">
+        <div className="shadow-lg rounded-[20px] p-[24px]">
             {props.children}
         </div>
     );
