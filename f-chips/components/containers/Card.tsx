@@ -1,15 +1,13 @@
-import { NextPage } from 'next';
+import { NextPage } from "next";
 
 type Props = {
-    children: any;
+  children: any;
 };
 
 const Card: NextPage<Props> = (props) => {
-    return(
-        <div className="shadow-lg rounded-[20px] p-[24px]">
-            {props.children}
-        </div>
-    );
+  return (
+    <div className="shadow-lg rounded-[20px] p-[24px]">{props.children}</div>
+  );
 };
 
 export default Card;

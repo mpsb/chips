@@ -1,13 +1,17 @@
-import { NextPage } from 'next';
+import { NextPage } from "next";
 
 type Props = {
-    placeholder: string;
+  placeholder: string;
 };
 
 const TextField: NextPage<Props> = (props) => {
-    return(
-        <input type="text" className="border-solid border border-black border-opacity-25 rounded-[20px] px-[8px] py-[4px]" placeholder={props.placeholder}/>
-    );
+  return (
+    <input
+      type="text"
+      className="border-solid border border-black border-opacity-25 rounded-[20px] px-[8px] py-[4px]"
+      placeholder={props.placeholder}
+    />
+  );
 };
 
 export default TextField;
