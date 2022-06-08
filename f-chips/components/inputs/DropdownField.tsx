@@ -9,7 +9,7 @@ type SelectOption = {
 
 type SelectProps = {
   dropdownOptions: Array<SelectOption>;
-  handleChange: ChangeEventHandler;
+  handleChange?: ChangeEventHandler;
   additionalProps?: string;
 };
 
