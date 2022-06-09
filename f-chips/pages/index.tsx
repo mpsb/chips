@@ -5,6 +5,7 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import Flexbox from "../components/containers/Flexbox";
 import Large from "../components/text/Large";
 import DropdownField from "../components/inputs/DropdownField";
+import { useState, ChangeEvent } from "react";
 
 const testOptions = [
   { value: "HKD", label: "HKD" },
@@ -13,6 +14,17 @@ const testOptions = [
 ];
 
 const Home: NextPage = () => {
+  const [amount, setAmount] = useState(0);
+  const [currency, setCurrency] = useState("HKD");
+
+  const handleDropdownFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setCurrency(event.target.value);
+  };
+
+  const handleInputFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setAmount(Number(event.target.value));
+  };
+
   return (
     <Flexbox additionalProps="flex-row flex-wrap m-[32px] justify-center gap-[16px]">
       <Card>
@@ -21,12 +33,19 @@ const Home: NextPage = () => {
           placeholder="Amount"
           type="number"
           min="0.1"
+          handleChange={handleInputFieldChange}
+          value={amount}
           additionalProps="text-[18px] mr-[8px] mb-[8px]"
         />
         <DropdownField
           dropdownOptions={testOptions}
+          handleChange={handleDropdownFieldChange}
+          value={currency}
           additionalProps="text-[18px]"
         />
+        <Large>
+          {amount} {currency}
+        </Large>
       </Card>
       <Card>
         <Large additionalProps="pb-[8px]">Recipient will receive:</Large>

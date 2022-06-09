@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import { ChangeEventHandler } from "react";
 
 type InputNumberProps = {
   type: "number";
@@ -8,6 +9,8 @@ type InputNumberProps = {
 
 type InputProps = {
   placeholder: string;
+  handleChange?: ChangeEventHandler;
+  value?: string | number;
   additionalProps?: string;
 } & InputNumberProps;
 
@@ -19,6 +22,8 @@ const TextField: NextPage<InputProps> = (props) => {
       placeholder={props.placeholder}
       min={props.min}
       max={props.max}
+      onChange={props.handleChange}
+      value={props.value}
     />
   );
 };
