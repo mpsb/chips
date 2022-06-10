@@ -15,10 +15,17 @@ const testOptions = [
 
 const Home: NextPage = () => {
   const [amount, setAmount] = useState(0);
+  const [receivingAmount, setReceivingAmount] = useState(0);
   const [currency, setCurrency] = useState("HKD");
+  const [receivingCurrency, setReceivingCurrency] = useState("HKD");
 
   const handleDropdownFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
+  };
+
+  const handleReceivingDropdownFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+    // api call to currency conversion ()
+    setReceivingCurrency(event.target.value);
   };
 
   const handleInputFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +60,8 @@ const Home: NextPage = () => {
         <DropdownField
           dropdownOptions={testOptions}
           additionalProps="text-[18px]"
+          value={receivingCurrency}
+
         />
         <br></br>
         <br></br>
