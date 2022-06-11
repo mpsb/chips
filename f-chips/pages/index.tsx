@@ -1,11 +1,35 @@
+import { useState, ChangeEvent } from "react";
 import type { NextPage } from "next";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from "@apollo/client";
 import Card from "../components/containers/Card";
 import InputField from "../components/inputs/InputField";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import Flexbox from "../components/containers/Flexbox";
 import Large from "../components/text/Large";
 import DropdownField from "../components/inputs/DropdownField";
-import { useState, ChangeEvent } from "react";
+
+const client = new ApolloClient({
+  uri: "https://48p1r2roz4.sse.codesandbox.io",
+  cache: new InMemoryCache(),
+});
+
+client
+  .query({
+    query: gql`
+      query GetRates {
+        rates(currency: "USD") {
+          currency
+        }
+      }
+    `,
+  })
+  .then((result) => console.log(result));
 
 const testOptions = [
   { value: "HKD", label: "HKD" },
@@ -23,7 +47,9 @@ const Home: NextPage = () => {
     setCurrency(event.target.value);
   };
 
-  const handleReceivingDropdownFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleReceivingDropdownFieldChange = (
+    event: ChangeEvent<HTMLInputElement>,
+  ) => {
     // api call to currency conversion ()
     setReceivingCurrency(event.target.value);
   };
@@ -56,12 +82,13 @@ const Home: NextPage = () => {
       </Card>
       <Card>
         <Large additionalProps="pb-[8px]">Recipient will receive:</Large>
-        <Large additionalProps="font-semibold inline-block mr-[8px]">100</Large>
+        <Large additionalProps="font-semibold inline-block mr-[8px]">
+          {receivingAmount}
+        </Large>
         <DropdownField
           dropdownOptions={testOptions}
           additionalProps="text-[18px]"
           value={receivingCurrency}
-
         />
         <br></br>
         <br></br>
