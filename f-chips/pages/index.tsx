@@ -1,35 +1,11 @@
 import { useState, ChangeEvent } from "react";
 import type { NextPage } from "next";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql,
-} from "@apollo/client";
 import Card from "../components/containers/Card";
 import InputField from "../components/inputs/InputField";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import Flexbox from "../components/containers/Flexbox";
 import Large from "../components/text/Large";
 import DropdownField from "../components/inputs/DropdownField";
-
-const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io",
-  cache: new InMemoryCache(),
-});
-
-client
-  .query({
-    query: gql`
-      query GetRates {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `,
-  })
-  .then((result) => console.log(result));
 
 const testOptions = [
   { value: "HKD", label: "HKD" },
