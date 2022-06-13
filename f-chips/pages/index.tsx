@@ -64,6 +64,7 @@ const Home: NextPage = () => {
         <DropdownField
           dropdownOptions={testOptions}
           additionalProps="text-[18px]"
+          handleChange={handleReceivingDropdownFieldChange}
           value={receivingCurrency}
         />
         <br></br>
